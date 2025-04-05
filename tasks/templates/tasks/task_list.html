@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Mis Tareas</h1>
+  <ul>
+    {% for task in tasks %}
+      <li>
+            {{ task.name }} - {{ task.status }}
+            {% if task.status == 'Not Resolved' %}
+                <a href="{% url 'mark_resolved' task.id %}">Marcar como Resuelta</a>
+            {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_task' %}">Agregar tarea</a>
+{% endblock %}
